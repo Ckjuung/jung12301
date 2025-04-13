@@ -2,7 +2,7 @@ name: Tenhill Molit Auto Alert
 
 on:
   schedule:
-    - cron: '0 20 * * *'  # 매일 오전 5시 KST
+    - cron: '0 20 * * *'
   workflow_dispatch:
 
 jobs:
