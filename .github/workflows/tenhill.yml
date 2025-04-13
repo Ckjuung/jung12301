@@ -1,9 +1,9 @@
-name: Tenhill Auto Alert
+name: Tenhill Multi-Apt Alert
 
 on:
   schedule:
-    - cron: '0 20 * * *'  # 매일 오전 5시 KST
-  workflow_dispatch:      # 수동 실행도 가능
+    - cron: '50 21 * * *'  # 오전 6시 50분 KST
+  workflow_dispatch:
 
 jobs:
   run-alert:
@@ -11,16 +11,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.11
-
+          python-version: 3.10
       - name: Install dependencies
         run: |
           pip install requests xmltodict pandas
-
       - name: Run alert script
         run: |
           python tenhill_final.py
