@@ -19,7 +19,7 @@ else:
     seen = set()
 
 # ✅ 거래 수집 범위: 2025.01 ~ 현재
-start = datetime(2025, 4, 1)
+start = datetime(2025, 1, 1)
 today = datetime.today()
 months = []
 while start <= today:
