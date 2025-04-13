@@ -50,10 +50,11 @@ def fetch_data(lawd_cd):
                     all_rows.append(rows)
     return pd.DataFrame(all_rows)
 
-# 성동구 + 강남구
+# 성동구 + 강남구 + 동작구
 df1 = fetch_data("11200")  # 성동구
 df2 = fetch_data("11680")  # 강남구
-df = pd.concat([df1, df2], ignore_index=True)
+df3 = fetch_data("11590")  # 동작구
+df = pd.concat([df1, df2, df3], ignore_index=True)
 df['excluUseAr'] = df['excluUseAr'].astype(float)
 
 # 필터링 조건 정의
@@ -65,7 +66,15 @@ filtered = df[cond_centras | cond_pureunmaeul | cond_han_central | cond_sangdo_p
 
 filtered['uid'] = filtered['dealYear'] + filtered['dealMonth'] + filtered['dealDay'] +                   filtered['aptNm'] + filtered['excluUseAr'].astype(str) + filtered['floor']
 
+print(f"🔍 전체 필터링된 거래 수: {len(filtered)}")
+print("🧾 필터링된 거래 미리보기:")
+print(filtered[['aptNm', 'umdNm', 'excluUseAr', 'floor', 'dealYear', 'dealMonth', 'dealDay']].head())
+
 new_trades = filtered[~filtered['uid'].isin(seen)].copy()
+print(f"🆕 새 거래 수 (알림 예정): {len(new_trades)}")
+if not new_trades.empty:
+    print("✅ 새 거래 UID 예시:", new_trades['uid'].head().to_list())
+
 
 if new_trades.empty:
     print("🔍 조건에 맞는 새 거래 없음")
