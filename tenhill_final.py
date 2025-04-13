@@ -85,7 +85,7 @@ else:
             f"[실거래가 알림]\n"
             f"📅 {row['dealYear']}.{row['dealMonth']}.{row['dealDay']}\n"
             f"🏢 {row['aptNm']} | {row['umdNm']} | {row['excluUseAr']}㎡ | {row['floor']}층\n"
-            f"💰 {row['거래금액(만원)']:,}만원"
+            f"💰 {row['거래금액(만원)']:,}만원\n📌 거래유형: {row.get('dealingGbn', '정보없음')}"
         )
         url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
         requests.post(url, data={'chat_id': CHAT_ID, 'text': msg})
