@@ -58,9 +58,9 @@ df['excluUseAr'] = df['excluUseAr'].astype(float)
 
 # 필터링 조건 정의
 cond_centras = (df['aptNm'].str.contains('센트라스')) & (df['umdNm'] == '하왕십리동') & (df['excluUseAr'].between(83.0, 85.99))
-cond_pureunmaeul = (df['aptNm'].str.contains('푸른마을')) & (df['umdNm'] == '일원동') & (df['excluUseAr'].between(58.01, 60.01))
-cond_han_central = (df['aptNm'].str.contains('흑석한강센트레빌1차')) & (df['umdNm'] == '흑석동') & (df['excluUseAr'].between(58.01, 60.01))
-cond_sangdo_park = (df['aptNm'].str.contains('상도파크자이')) & (df['umdNm'] == '상도동') & (df['excluUseAr'].between(58.01, 60.01))
+cond_pureunmaeul = (df['aptNm'].str.contains('푸른마을')) & (df['umdNm'] == '일원동') & (df['excluUseAr'].between(83.0, 85.99))
+cond_han_central = (df['aptNm'].str.contains('흑석한강센트레빌1차')) & (df['umdNm'] == '흑석동') & (df['excluUseAr'].between(83.0, 85.99))
+cond_sangdo_park = (df['aptNm'].str.contains('상도파크자이')) & (df['umdNm'] == '상도동') & (df['excluUseAr'].between(83.0, 85.99))
 filtered = df[cond_centras | cond_pureunmaeul | cond_han_central | cond_sangdo_park].copy()
 
 filtered['uid'] = filtered['dealYear'] + filtered['dealMonth'] + filtered['dealDay'] +                   filtered['aptNm'] + filtered['excluUseAr'].astype(str) + filtered['floor']
