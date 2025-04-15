@@ -64,7 +64,7 @@ cond_centras = (df['aptNm'].str.contains('센트라스')) & (df['umdNm'] == '하
 cond_pureunmaeul = (df['aptNm'].str.contains('푸른마을')) & (df['umdNm'] == '일원동') & (df['excluUseAr'].between(83.0, 85.99))
 cond_han_central = (df['aptNm'].str.contains('흑석한강센트레빌')) & (df['umdNm'] == '흑석동') & (df['excluUseAr'].between(83.0, 85.99))
 cond_sangdo_park = (df['aptNm'].str.contains('상도파크자이')) & (df['umdNm'] == '상도동') & (df['excluUseAr'].between(83.0, 85.99))
-cond_olympic = (df['aptNm'].str.contains('올림픽훼밀밀리타운')) & (df['umdNm'] == '문정동') & (df['excluUseAr'].between(80.0, 86.0))
+cond_olympic = (df['aptNm'].str.contains('올림픽훼밀리타운')) & (df['umdNm'] == '문정동') & (df['excluUseAr'].between(80.0, 86.0))
 
 filtered = df[cond_centras | cond_pureunmaeul | cond_han_central | cond_sangdo_park | cond_olympic].copy()
 
